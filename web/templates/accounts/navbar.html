@@ -1,0 +1,42 @@
+{% load static %}
+<style media="screen">
+  .hello-msg{
+    font-size: 18px;
+    color: #ffff;
+    margin-right:20px;
+  }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <img src="{% static 'images/logo.jpg'%}" id="imglogo" >
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <!--
+        to check if requested user is admin or not
+        because when we create  user with superuser
+        it automatically set is_staff=true
+        so if user is superuser(admin) then only we should show home or customersin navbar
+        -->
+      {% if request.user.is_staff %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'product' %}">products</a>
+      </li>
+      {% else %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'account-settings' %}">settings <span class="sr-only">(current)</span></a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  <!--
+request.user we can use it directly without actua;;y passing anything to navbar
+   -->
+  <span class="hello-msg">hello,{{request.user}} </span>
+  <span><a class="hello-msg" href="{% url 'logout'%}">logout</a></span>
+</nav>

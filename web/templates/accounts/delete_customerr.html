@@ -1,0 +1,10 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+<p>ARE you sure you wanna delete this {{customer}}</p>
+<form class="" action="{% url 'delete_customer'%}" method="POST">{%csrf_token%}
+  <a class='btn btn-warning' href='{% url 'home'%}'> cancel</a>
+  <input class="btn btn-danger" type="button" value="confirm">
+
+</form>
+{% endblock %}

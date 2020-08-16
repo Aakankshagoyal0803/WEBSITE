@@ -1,0 +1,26 @@
+{% extends 'accounts/main.html'%}
+{% load static%}
+{% block content %}
+
+
+<div class="row">
+  <div class="col-md-8">
+    <div class=card card-body">
+       <form class="" action="" method="post">{% csrf_token %}
+         <div class='jumbotron'>
+
+
+
+        <br>
+      <form>
+        {{form.as_p}}
+        <input class="btn btn-sm btn-success" type="submit" value="submit">
+      <form>
+         </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
